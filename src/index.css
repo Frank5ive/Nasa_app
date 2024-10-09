@@ -1,0 +1,239 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: white;
+  background-color: #030615;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: row; /* Change to row layout */
+  position: relative;
+  overflow: hidden; /* Prevent overflow from the main root */
+}
+
+.mainContent {
+  flex: 1; /* Make it take the remaining width */
+  overflow-y: auto; /* Enable scrolling for main content */
+  padding-bottom: 80px; /* Give space for the footer */
+}
+
+.imgContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.bgImg {
+  width: 100%;
+  height: auto; /* Adjust height for responsiveness */
+  flex: 1;
+  object-fit: cover;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.7); /* Optional: background color for footer */
+}
+
+footer h2 {
+  font-size: 1.4rem;
+}
+
+footer h1 {
+  font-size: 0.9rem;
+  font-weight: 200;
+}
+
+footer div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+footer button {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 1rem;
+  transition-duration: 200ms;
+  cursor: pointer;
+}
+
+footer button i {
+  font-size: 1.3rem;
+}
+
+footer button:hover {
+  opacity: 0.7;
+}
+
+.bgGradient {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to top, #030615, rgba(255, 255, 255, 0));
+}
+
+/* Sidebar Styles */
+.sideBar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 300px; /* You can adjust this as needed */
+  display: flex;
+  flex-direction: column;
+  z-index: 1001;
+  background-color: #030615;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
+  overflow-y: auto; /* Enable scrolling for sidebar */
+}
+
+/* Background overlay to close the sidebar */
+.bckgrdOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+  z-index: 1000;
+  cursor: pointer;
+}
+
+/* Sidebar content styles */
+.sideBarContent {
+  z-index: 1002;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  height: 100%;
+  width: 100%;
+  background-color: #030615;
+}
+
+.sideBarContent h2 {
+  font-weight: 200;
+  font-size: 1.4rem;
+}
+
+.descriptionTitle {
+  font-size: 1.3rem;
+  font-weight: 200;
+}
+
+.descriptionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sideBarContent div {
+  flex: 1;
+}
+
+.sideBarContent button {
+  background: transparent;
+  color: white;
+  border: none;
+  outline: none;
+  margin-right: auto;
+  cursor: pointer;
+  transition-duration: 200ms;
+  padding: 1rem;
+}
+
+.sideBarContent button:hover {
+  opacity: 0.7;
+}
+
+.loadingState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Ensure it occupies full height of the viewport */
+}
+
+.loadingState i {
+  opacity: 0.2;
+  font-size: 3rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mobile-first design adjustments */
+@media (max-width: 640px) {
+  footer {
+    flex-direction: column; /* Stack footer items vertically on mobile */
+    align-items: center;
+    text-align: center;
+  }
+
+  footer h2, footer h1 {
+    font-size: 1.2rem; /* Slightly reduce font size for small screens */
+  }
+
+  footer button i {
+    font-size: 1.1rem; /* Smaller icon size */
+  }
+
+  .sideBar {
+    width: 80%; /* Smaller sidebar for mobile */
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .sideBarContent {
+    padding: 1rem;
+  }
+
+  .bgImg {
+    height: auto; /* Ensure background images resize properly */
+    width: 100%;
+  }
+}
+
+/* Larger screen (Desktop) adjustments */
+@media (min-width: 640px) {
+  .sideBar {
+    width: 400px;
+    box-shadow: -2px 0 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .sideBarContent {
+    padding: 2rem;
+  }
+
+  footer {
+    padding: 1.5rem;
+  }
+}
